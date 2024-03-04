@@ -13,7 +13,7 @@ user4 = models.User("Olivia", "Jones", "olivia@example.com", "passwordabc", "010
 user5 = models.User("William", "Taylor", "william@example.com", "passwordxyz", "0125555555")
 
 project1 = models.Project("Oppenheimer", "I'm destroyer of the worlds", 20000, "1999-11-12", "2001-11-12", user1)
-project2 = models.Project("Barbie", "I'm a barbie girl", 20000, "1999-11-12", "2001-11-12", user2)
+project2 = models.Project("Barbie", "I'm a barbie girl", 35000, "1999-11-12", "2001-11-12", user2)
 project3 = models.Project("SpaceX Mars Mission", "Mission to colonize Mars", 1000000, "2025-01-01", "2030-12-31", user2)
 project4 = models.Project("Clean Water Initiative", "Providing clean water to rural areas", 50000, "2024-06-01", "2025-06-01", user1)
 project5 = models.Project("Renewable Energy Project", "Building solar and wind farms", 75000, "2023-03-15", "2024-03-15", user5)
@@ -47,12 +47,12 @@ while True:
 
     if not logged_in_user:
         if choice == '1':
-            logged_in_user = functions.login(users_database)
+            logged_in_user = functions.login()
         elif choice == '2':
             newUser = functions.register_user()
             users_database.add_user(newUser)
         elif choice == '3':
-            functions.show_users(users_database)
+            functions.show_users()
         elif choice == '4':
             print("Exiting program...\n")
             break

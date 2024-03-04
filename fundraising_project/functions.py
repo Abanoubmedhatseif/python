@@ -1,6 +1,29 @@
 import models
 import re
 from datetime import datetime
+import json
+
+def readDataFromJsonFile(filename):
+    try:
+        with open(filename, 'r') as file:
+            data = json.load(file)
+        return data
+    except FileNotFoundError:
+        return []
+
+
+def saveDataToJsonFile(new_data, filename):
+    file = open(filename, 'r')
+    try:
+        existing_data = json.load(file)
+    except FileNotFoundError:
+        existing_data = []
+    file.close()
+
+    existing_data.append(new_data)
+    file = open(filename, 'w')
+    json.dump(existing_data, file, indent=4)
+    file.close()
 
 
 def register_user():
@@ -22,16 +45,20 @@ def register_user():
         print("Invalid Egyptian phone number. Please try again.")
         phone = input("Mobile Phone (Egyptian number): ")
     print("User registered successfully!")
-    return models.User(first_name, last_name, email, password, phone)
+    
+    newUser = models.User(first_name, last_name, email, password, phone)
+    print(newUser)
+    saveDataToJsonFile(newUser.to_dict(), 'userdata.json')
 
 
-def login(users_database):
+def login():
+    users_database = readDataFromJsonFile('userdata.json')
     print("Please login with your credentials:")
     email = input("Email: ")
     password = input("Password: ")
 
-    for user in users_database.users:
-        if user.email == email and user.password == password:
+    for user in users_database:
+        if  user['email'] == email and user['password'] == password:
             print("Login successful!")
             return user
 
@@ -39,11 +66,11 @@ def login(users_database):
     return None
 
 
-def show_users(users_database):
+def show_users():
+    users_database = readDataFromJsonFile('userdata.json')
     print("List of users:")
-    for idx, user in enumerate(users_database.users, start=1):
-        print(f"{idx}. {user.first_name} {user.last_name} ({user.email})")
-        
+    for idx, user in enumerate(users_database, start=1):
+        print(f"{idx}. {user['first_name']} {user['last_name']} ({user['email']})")
 
 
 def create_project(user):
@@ -61,12 +88,14 @@ def create_project(user):
         end_date = input("End Date (YYYY-MM-DD): ")
     return models.Project(title, details, target_amount, start_date, end_date)
 
+
 def is_valid_date(date_str):
     try:
         datetime.strptime(date_str, '%Y-%m-%d')
         return True
     except ValueError:
         return False
+
 
 def view_projects(user, projects):
     print("\nList of projects:")
@@ -128,6 +157,7 @@ def edit_project(user, projects_list):
                 print("You are not the owner of this project.")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
+         
             
 def delete_project(user, projects_list):
     print("Delete projects owned by you:")
@@ -158,6 +188,7 @@ def delete_project(user, projects_list):
                 print("You are not the owner of this project.")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
+
 
 def search_project_by_date(projects_list):
     date_type = input("Do you want to search by project start date or end date? (start/end): ").lower()
