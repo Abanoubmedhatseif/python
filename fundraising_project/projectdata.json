@@ -40,5 +40,36 @@
             "password": "password789",
             "phone": "555-123-4567"
         }
-    }
-]
+    },
+    {
+        "title": "Project D",
+        "details": "Building homes for families in need.",
+        "total_target": 15000.0,
+        "start_date": "2024-03-20",
+        "end_date": "2024-06-01",
+        "owner": {
+            "first_name": "Michael",
+            "last_name": "Brown",
+            "email": "michaelbrown@example.com",
+            "password": "passwordABC",
+            "phone": "111-222-3333"
+        }
+    },
+    {
+        "title": "Project E",
+        "details": "Providing medical supplies to remote clinics.",
+        "total_target": 8000.0,
+        "start_date": "2024-04-10",
+        "end_date": "2024-07-31",
+        "owner": {
+            "first_name": "Emily",
+            "last_name": "Taylor",
+            "email": "emilytaylor@example.com",
+            "password": "passwordDEF",
+            "phone": "444-555-6666"
+        }
+    },
+    {
+        "title": "Project F",
+        "details": "Supporting arts education for underprivileged youth.",
+        
