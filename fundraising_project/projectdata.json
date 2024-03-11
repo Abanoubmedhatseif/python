@@ -1,0 +1,44 @@
+[
+    {
+        "title": "hamada",
+        "details": "srgps",
+        "total_target": 651.0,
+        "start_date": "1111-11-10",
+        "end_date": "6958-10-10",
+        "owner": {
+            "first_name": "merna",
+            "last_name": "abdalla",
+            "email": "menna@BBB.COM",
+            "password": "menna123",
+            "phone": "01207297358"
+        }
+    },
+    {
+        "title": "boba",
+        "details": "drgopitdg",
+        "total_target": 5654.0,
+        "start_date": "5555-1-10",
+        "end_date": "5555-1-5",
+        "owner": {
+            "first_name": "merna",
+            "last_name": "abdalla",
+            "email": "menna@BBB.COM",
+            "password": "menna123",
+            "phone": "01207297358"
+        }
+    },
+    {
+        "title": "mafii4",
+        "details": "spfsjf",
+        "total_target": 64614.0,
+        "start_date": "1111-1-1",
+        "end_date": "5555-5-5",
+        "owner": {
+            "first_name": "merna",
+            "last_name": "abdalla",
+            "email": "menna@BBB.COM",
+            "password": "menna123",
+            "phone": "01207297358"
+        }
+    }
+]
