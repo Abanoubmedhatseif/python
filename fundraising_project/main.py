@@ -5,21 +5,6 @@ users_database = models.Users()
 projects_list = models.projects()
 
 
-
-#### to populate test data
-# user1 = models.User("Michael", "Johnson", "michael@example.com", "password123", "0111111111")
-# user2 = models.User("Emma", "Williams", "emma@example.com", "password456", "0122222222")
-# user3 = models.User("James", "Brown", "james@example.com", "password789", "0123333333")
-# user4 = models.User("Olivia", "Jones", "olivia@example.com", "passwordabc", "01044444444")
-# user5 = models.User("menna", "Taylor", "william@example.com", "passwordxyz", "0125555555")
-# menna = models.User("merna","abdalla","merna@gmail.com","menna123","01200228840")
-
-
-# users_database.add_user(user1,user2,user3,user4,user5)
-#projects_list.add_project(project1,project2,project3,project4,project5)
-
-
-
 logged_in_user = None
 
 while True:
