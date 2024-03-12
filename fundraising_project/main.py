@@ -29,7 +29,6 @@ while True:
             logged_in_user = functions.login()
         elif choice == '2':
             newUser = functions.register_user()
-            users_database.add_user(newUser)
         elif choice == '3':
             functions.show_users()
         elif choice == '4':
