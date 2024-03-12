@@ -4,7 +4,6 @@ import functions
 users_database = models.Users()
 projects_list = models.projects()
 
-
 logged_in_user = None
 
 while True:

@@ -68,8 +68,5 @@
             "password": "passwordDEF",
             "phone": "444-555-6666"
         }
-    },
-    {
-        "title": "Project F",
-        "details": "Supporting arts education for underprivileged youth.",
-        
+    }
+]

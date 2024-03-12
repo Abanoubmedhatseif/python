@@ -11,7 +11,6 @@ def readDataFromJsonFile(filename):
     except FileNotFoundError:
         return []
 
-
 def saveDataToJsonFile(new_data, filename):
     file = open(filename, 'r')
     try:
@@ -24,6 +23,8 @@ def saveDataToJsonFile(new_data, filename):
     file = open(filename, 'w')
     json.dump(existing_data, file, indent=4)
     file.close()
+
+
 
 
 def register_user():
@@ -47,9 +48,9 @@ def register_user():
     print("User registered successfully!")
     
     newUser = models.User(first_name, last_name, email, password, phone)
+    print(newUser)
     print(newUser.to_dict())
     saveDataToJsonFile(newUser.to_dict(), 'userdata.json')
-
 
 def login():
     users_database = readDataFromJsonFile('userdata.json')
@@ -65,12 +66,14 @@ def login():
     print("Sorry ... Invalid email or password.")
     return None
 
-
 def show_users():
     users_database = readDataFromJsonFile('userdata.json')
     print("List of users:")
     for idx, user in enumerate(users_database, start=1):
         print(f"{idx}. {user['first_name']} {user['last_name']} ({user['email']})")
+
+
+
 
 
 def is_valid_date(date_str):
@@ -99,7 +102,6 @@ def create_project(user):
     newProject = models.Project(title, details, target_amount, start_date, end_date, user)
     saveDataToJsonFile(newProject.to_dict(), 'projectdata.json')
     
-    
 def view_projects(user):
     projects = readDataFromJsonFile('projectdata.json')
     print("\nList of projects:")
@@ -108,63 +110,6 @@ def view_projects(user):
             print(f"{idx}. {project['title']} (Owned by You)")
         else:
             print(f"{idx}. {project['title']}")
-
-
-
-
-# def edit_project(user, ):
-#     projects_list = readDataFromJsonFile('projectdata.json')
-#     print("\nEdit projects owned by you:")
-#     print("-----------------------------")
-#     for idx, project in enumerate(projects_list, start=1):
-#         if is_owner(project,user):
-#             print(f"{idx}. {project["title"]}")
-    
-#     while True:
-#         choice = input("\nEnter the number of the project you want to edit (0 to cancel): ")
-#         if choice == '0':
-#             return
-
-#         try:
-#             idx = int(choice) - 1
-#             project = projects_list[idx]
-#             if is_owner(project,user):
-#                 print("Select property to edit:")
-#                 print("1. Title")
-#                 print("2. Details")
-#                 print("3. Target Amount")
-#                 print("4. Start Date")
-#                 print("5. End Date")
-#                 option = input("Enter your choice: ")
-
-#                 if option == '1':
-#                     project["title"] = input("Enter new title: ")
-#                 elif option == '2':
-#                     project["details"] = input("Enter new details: ")
-#                 elif option == '3':
-#                     project["total_target"] = float(input("Enter new target amount (EGP): "))
-#                 elif option == '4':
-#                     new_start_date = input("Enter new start date (YYYY-MM-DD): ")
-#                     while not is_valid_date(new_start_date):
-#                         print("Invalid date format. Please try again.")
-#                         new_start_date = input("Enter new start date (YYYY-MM-DD): ")
-#                     project["start_date"] = new_start_date
-#                 elif option == '5':
-#                     new_end_date = input("Enter new end date (YYYY-MM-DD): ")
-#                     while not is_valid_date(new_end_date):
-#                         print("Invalid date format. Please try again.")
-#                         new_end_date = input("Enter new end date (YYYY-MM-DD): ")
-#                     project["end_date"] = new_end_date
-#                 else:
-#                     print("Invalid option. Please enter a number between 1 and 5.")
-                
-#                 print("Project updated successfully!")
-#                 return
-#             else:
-#                 print("You are not the owner of this project.")
-#         except Exception as e:
-#             print(f"An unexpected error occurred: {e}")
-         
          
 def edit_project(user):
     projects_list = readDataFromJsonFile('projectdata.json')
@@ -262,7 +207,6 @@ def delete_project(user):
                 print("You are not the owner of this project.")
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
-
 
 def search_project_by_date():
     projects_list = readDataFromJsonFile('projectdata.json')
