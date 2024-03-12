@@ -15,14 +15,6 @@ class User:
             'phone': self.phone
         }
         
-
-class Users: 
-    def __init__(self):
-        self.users = []
-        
-    def add_user(self, *users):
-        self.users.extend(users)
-        
     
 
 class Project:
@@ -47,10 +39,3 @@ class Project:
     def is_owner(self, user):
         return self.owner == user
         
-    
-class projects: 
-    def __init__(self):
-        self.projects = []
-        
-    def add_project(self, *projects):
-        self.projects.extend(projects)
